@@ -307,19 +307,19 @@ p {
   animation: polaroidDrop .9s cubic-bezier(.18,.75,.25,1.15) .75s forwards;
 }
 
-@keyframes polaroidDrop {
+@keyframes dropIn {
   0% {
     opacity: 0;
-    transform: translateY(-120%) rotate(var(--tilt));
+    transform: translateY(-100vh) rotate(var(--tilt));
   }
 
   70% {
     opacity: 1;
-    transform: translateY(8px) rotate(var(--tilt));
+    transform: translateY(15px) rotate(var(--tilt));
   }
 
   85% {
-    transform: translateY(-5px) rotate(var(--tilt));
+    transform: translateY(-6px) rotate(var(--tilt));
   }
 
   100% {
