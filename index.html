@@ -329,13 +329,15 @@
     }
 
     .polaroid img {
-      width: 100%;
-      height: clamp(180px, 24vh, 260px);
-      object-fit: cover;
-      border-radius: 4px;
-      background: #f2ebe0;
-      margin-bottom: 10px;
-    }
+    width: 100%;
+    height: auto !important;
+    max-height: none !important;
+    object-fit: contain !important;
+    display: block;
+    border-radius: 4px;
+    background: #f2ebe0;
+    margin-bottom: 10px;
+}
 
 
     .polaroid p {
