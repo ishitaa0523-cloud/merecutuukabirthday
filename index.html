@@ -201,3 +201,607 @@ p {
   background: #c56b73;
   border-radius: 8px;
 }
+
+/* SLIDE 4 - AWARD */
+
+.award-card {
+  position: relative;
+  background: linear-gradient(180deg, #fffdf5 0%, #fbf3d5 100%);
+  border: 3px solid #c99a2e;
+  outline: 5px solid rgba(201, 154, 46, 0.22);
+  border-radius: 16px;
+  padding: 34px 36px 28px;
+  max-width: 720px;
+  width: 92%;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.14);
+}
+
+.award-ribbon {
+  display: inline-block;
+  background: #b81424;
+  color: #fff8e7;
+  font-weight: bold;
+  font-size: 0.95rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 6px 18px;
+  border-radius: 999px;
+  border: 2px solid #e2b84b;
+  margin-bottom: 14px;
+}
+
+.award-divider {
+  width: 140px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #c99a2e, transparent);
+  margin: 12px auto 16px;
+}
+
+.award-recipient {
+  font-size: 1.45rem;
+  font-weight: bold;
+  color: #5c1018;
+  margin-bottom: 12px;
+}
+
+.award-quote {
+  font-style: italic;
+  font-size: 1.2rem;
+  color: #2f221f;
+  line-height: 1.55;
+}
+
+/* SLIDE 5 - VERTICAL POLAROID GALLERY */
+
+#slide-5 .wavy-frame {
+  justify-content: flex-start;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 22px 18px;
+}
+
+.gallery-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  width: 100%;
+  align-items: center;
+  overflow: visible;
+  padding: 25px 10px 15px;
+}
+
+.polaroid {
+  --tilt: 0deg;
+  position: relative;
+  background: #fff;
+  padding: 12px 12px 18px;
+  border-radius: 6px;
+  box-shadow: 0 10px 22px rgba(0, 0, 0, .18);
+  border: 1px solid #eadfd2;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  width: min(100%, 560px);
+  min-width: 0;
+  opacity: 0;
+  transform: translateY(-100vh) rotate(var(--tilt));
+}
+
+.polaroid:nth-child(1) {
+  --tilt: -4deg;
+}
+
+.polaroid:nth-child(2) {
+  --tilt: 2deg;
+}
+
+.polaroid:nth-child(3) {
+  --tilt: -2deg;
+}
+
+#slide-5.active .polaroid:nth-child(1) {
+  animation: dropIn 0.8s ease-out 0.2s forwards;
+}
+
+#slide-5.active .polaroid:nth-child(2) {
+  animation: dropIn 0.8s ease-out 1.1s forwards;
+}
+
+#slide-5.active .polaroid:nth-child(3) {
+  animation: dropIn 0.8s ease-out 2.0s forwards;
+}
+
+@keyframes dropIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-100vh) rotate(var(--tilt));
+  }
+
+  70% {
+    opacity: 1;
+    transform: translateY(15px) rotate(var(--tilt));
+  }
+
+  85% {
+    transform: translateY(-6px) rotate(var(--tilt));
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) rotate(var(--tilt));
+  }
+}
+
+/* TAPE */
+
+.polaroid::before {
+  content: "";
+  position: absolute;
+  top: -34px;
+  left: 50%;
+  transform: translateX(-50%) rotate(2deg);
+  width: 18px;
+  height: 42px;
+  background: linear-gradient(90deg, #c58b45, #e1b56f, #b87932);
+  border-radius: 3px;
+  box-shadow: 0 2px 5px rgba(0,0,0,.18);
+  z-index: 3;
+}
+
+/* IMAGE - SHOW FULL IMAGE */
+
+.polaroid img {
+  display: block;
+  width: 100%;
+  height: 320px;
+  max-height: none;
+  object-fit: contain;
+  object-position: center;
+  border-radius: 4px;
+  background: #f2ebe0;
+  margin-bottom: 12px;
+  flex-shrink: 0;
+}
+
+/* TEXT BELOW IMAGE */
+
+.polaroid p {
+  font-size: clamp(.92rem, 1.05vw, 1.05rem);
+  line-height: 1.5;
+  color: #2b211e;
+  height: auto;
+  max-height: none;
+  overflow: visible;
+  margin: 0;
+  text-align: center;
+}
+
+/* HOVER */
+
+.gallery-grid .polaroid:hover {
+  z-index: 5;
+  transform: translateY(-8px) rotate(0deg) scale(1.03);
+  transition: transform .25s ease;
+}
+
+/* SLIDE 6 - VINYL */
+
+.song-sub {
+  font-size: 1.15rem;
+  color: #4a3531;
+  margin-bottom: 8px;
+}
+
+.vinyl-container {
+  position: relative;
+  width: 136px;
+  height: 136px;
+  margin: 10px 0 14px;
+}
+
+.record {
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, #2b2b2b 18%, #111 20%, #111 40%, #242424 41%, #111 60%);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35);
+}
+
+.record.playing {
+  animation: spin 3s linear infinite;
+}
+
+.record-center {
+  width: 44px;
+  height: 44px;
+  background: #b81424;
+  border-radius: 50%;
+  border: 3px solid #fff;
+}
+
+@keyframes spin {
+  100% { transform: rotate(360deg); }
+}
+
+.audio-play-btn {
+  margin-top: 8px;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 1.1rem;
+  font-weight: bold;
+  background: #b81424;
+  color: #fff;
+  padding: 10px 22px;
+  border-radius: 999px;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 5px 14px rgba(184, 20, 36, 0.35);
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.audio-play-btn:hover {
+  background: #8f0b19;
+  transform: translateY(-1px);
+}
+
+/* SLIDE 7 */
+
+.vintage-frame {
+  border: 8px solid #d4af37;
+  padding: 8px;
+  background: #fff;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  max-width: 480px;
+  width: 75%;
+}
+
+.vintage-frame img {
+  width: 100%;
+  height: 270px;
+  object-fit: contain;
+  object-position: center;
+  display: block;
+  background: #f2ebe0;
+}
+
+/* SLIDE 8 */
+
+.checklist {
+  list-style: none;
+  text-align: left;
+  width: 100%;
+  flex: 1;
+  overflow-y: auto;
+  padding: 6px 14px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px 28px;
+}
+
+.checklist li {
+  font-size: 1.12rem;
+  line-height: 1.4;
+  padding: 6px 0;
+  border-bottom: 1px dashed #dcc8c0;
+  color: #241916;
+}
+
+/* NAVIGATION */
+
+.nav-bar {
+  position: absolute;
+  bottom: 14px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 28px;
+  z-index: 20;
+  pointer-events: none;
+}
+
+.nav-arrow {
+  pointer-events: auto;
+  background: #b81424;
+  color: #fff;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  cursor: pointer;
+  box-shadow: 0 5px 14px rgba(0, 0, 0, 0.3);
+  border: 2px solid #fff5eb;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.nav-arrow:hover {
+  background: #8b0000;
+  transform: scale(1.05);
+}
+
+.nav-arrow:active {
+  transform: scale(0.94);
+}
+
+.nav-arrow.hidden {
+  visibility: hidden;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 768px) {
+  .checklist {
+    grid-template-columns: 1fr;
+  }
+
+  #slide-5 .wavy-frame {
+    padding: 18px 12px;
+  }
+
+  .gallery-grid {
+    gap: 30px;
+    padding: 22px 4px 18px;
+  }
+
+  .polaroid {
+    width: min(100%, 520px);
+  }
+
+  .polaroid img {
+    height: 280px;
+  }
+
+  .polaroid p {
+    font-size: .9rem;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="scrapbook-container">
+<div class="slides-wrapper">
+
+<!-- SLIDE 1 -->
+<div class="slide active" id="slide-1" style="padding:0;">
+  <div class="envelope-bg" onclick="goToNextSlide()">
+    <div class="envelope-flap"></div>
+    <div class="wax-seal-btn" title="Click to open">💌</div>
+    <div class="envelope-hint">Click the seal to open</div>
+  </div>
+</div>
+
+<!-- SLIDE 2 -->
+<div class="slide" id="slide-2">
+  <div class="wavy-frame">
+    <h1>Happyy Birthdayy Myy Cutuuu</h1>
+    <p style="margin-top:14px; font-size:1.45rem;">
+      Btw nerdy bandi esi chize hi kr sakti h hasiyo mat ❤️
+    </p>
+  </div>
+</div>
+
+<!-- SLIDE 3 -->
+<div class="slide" id="slide-3">
+  <div class="wavy-frame letter-frame">
+    <h2>Dear Future husband urf Kartik Nautiyal</h2>
+    <div class="letter-scroll">
+      <p>Happy Birthday Kartik ❤️
+I genuinely wish every birthday brings you all the happiness success you deserve. I hope you achieve everything never lose that spark in you. I wish I could make today a little more special for you and be there to celebrate all your little moments but virtually i'll try to
+I don't really know how to explain me my feelings but my heart feels so full when it comes to you Sometimes I just sit and think about how far you're going to go in life and it honestly makes me emotional bkc like my chhotu baby is doing i mean i've seen how hard you work for everything you want. Ik nothing ever come easy to you, yet you still keep pushing yourself every single day without giving up pta hai kya No matter what happens between us or what life puts us in i mean the worse already made life go through but yea I will always want to see you win. I'll always want to see you happy, successful, at peace, and proud of yourself. Even if someday I'm not standing next to you the way I wish daily for to be a part of me will still pray for you every day because that's how deeply I care about you. Pta hai kya i know you kartik and what hurts my heart the most is knowing how much you carry inside silently. People see you strength, your ambition, and the way you keep going, but they can't see how much stress pressure you put on yourself just to make your dreams come true and maybe that's why all I ever want to give is love, support you, and remind you that you doesn't have to carry everything alone baby i'm here saath mai kar lenge hum tere mere HUMARE sapne pure!? Haina bol HAAAN bol HAAAANNNNN and If life be on by side and gives me the chance to stay by your side I'd spend every day even i haven't being perfect enough not even close to better but i'm alwys sorry for such an asshole kartik but i want to keep trying to give you the love, comfort, and support you deserve because you truly deserves the world and if life somehow takes us in different directions, I'll still be somewhere praying that you gets everything you ever dreamed of, because seeing you succeed would always make my heart happy. I just love you in a way where your happiness genuinely matters to me, even beyond myself. I love you baby you have no idea how much you mean to me and I deadass know i can't do without you. Pta hai 5th may midnight OUR FIRST CALL pta h us din kis gand phati mai terese storeroom ke pass ko hoke baat kari thi kauki agar mummy papa uth jaate gand alg kar dete meri ki aise raat baat kari vo bhi ladke se lag ni rha hoga tujhe meri baato aur Avaaz se kauki cool side of personality bhi to dikhani thi mujh jesi chutiya ko but kartik by that call I got to know you I knew I wanted to spend the rest of my life with you. I know you probably think ki nahi tha Mazak tha tu serious nahi thi but kartik maa kasam tab hi tujhe future husband bol dia tha aur varna socha bhi ni aisa kisi ko bola but I geninuely wanna marry you and live my life with you. I wanna grow old and travel with you i just want to be with you in any way in every way. I'm really sorry for the way I am sometimes I know I'm the worst person you ever met bht buri bhoht gandi but I promise im working on it because there is nothing I would wanna do to ruin what we have because you have to understand your mine now and you can't leave we talked about growing older right? to usmai include hota haina getting in senses getting mind to bas phir mai hi hoon vo jisko karna h. And baby i'm here i want to be here with youpleaseeee because the last thing I want is for you to go through anything alone. pta ni par pta hai now that i'm being in love in with you I realized that true love hurts, it does like idk It's you who taught me how to love like mujhe to bas ye hota tha ki jo bhi romcom movie dekhi ki mujhe bhi chaiye insta pe लोगो ki stories de4khi mujhe  hi chaiye mujhe bhi ese inn लोगो से sex stories suni ki bc mujhe bhi karna bas yehi rha hai ki mujhe bhi karna hai chaiye aise rehna bas ye na ki kyu exactly kese chaiye kauki hoga to mera na like jesa dekha suna vaisa to nahi hoga life sabki alg hai stories bhi alg hogi acchi bana ni hogi lovy dovy karna hoga being with you like bc jhooth ni bolungi kartik maine aise sochna hi tere saath shuru kia tha and kartik pta hai kya jo bhi ho mai chahti hu like sach sach mai but life mai jo bhi ho saath rahe na rahe i can never stop loving you never leave you no matter what happens & make sure I will be holding your hand no matter how bad the whole world gets, I will never leave your side because baby all the love I have, it's all for you.
+I know you are insecure about the future. I know you sometimes overthink. I know you fear losing you I feel no different. I know it's not just any relationship because every time I think of you, that's when I really understand how it feels to be this extreme to lose everything for that one person because that one person... they mean the entire universe to you. The entire universe.
+Whenever you want me to be with you, I just need you to close your eyes and you will find me right beside you, holding your hand and I wouldn't blink twice to lose everything for you, including myself aata hi nahi hai dimaag mai sach bolu to
+All these... these are not just words. These are my emotions. My heart talking to you. All these are promises that I have made to you and myself. Because I need nobody but you. Better be a life full of sadness aur painthan not spending my whole life with you.
+I don't care how long it takes, I don't care how many ups and down we go through, just want it to be you. I want it to be us in the end.
+and same chiz baar baar ni bolni but Kartik I know things haven't been the way they should have been where I could have been better and I know I haven't always made you feel the way you deserved to feel and it's not about ki i didn't want to esa nahi hai kartik it's ki i didn't tried where i should have done I'm genuinely sorry for that. I'm not saying this to prove me right or take away from how you felt. I wish I had understood certain things sooner and handled them differently. Please know that whatever happened was never because I didn't love you or didn't value you. Sach mein Kartik I've loved you so much and I still do. Maybe I couldn't always express it or show it in the right ways but my feelings for you have always been real.
+Tere sahi aur mere galat ke paar we have us OUR US and I wish , pray , manifest , everything i could do for US!!!
+I don't want to lose you or what we had. I still wish we could find our way back to each other and build something better this time. Not by forgetting everything but by understanding each other and choosing to do things differently. I don't expect you to suddenly forget everything or make any decisions today. I just hope someday you might be open to giving us another chance.
+
+No matter what today brings I hope you smile a lot and feel loved. Take care of yourself and keep growing. I'm always going to wish the best for you. I love you my baby i love you the mosttt , more n more day by day my cutu chhotu baby
+Happy Birthday once again 22 ka hogya but for me you're my chhotu sa chhotu sa 2 saal ka bacha mera. 💕</p>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 4 -->
+<div class="slide" id="slide-4">
+  <div class="wavy-frame">
+    <div class="award-card">
+      <div class="award-ribbon">Official Recognition</div>
+      <h1 style="margin-bottom:4px;">BEST BOYFRIEND AWARD</h1>
+      <div class="award-divider"></div>
+      <p class="award-recipient">Presented to One n Only Mr Kartik Nautiyal</p>
+      <p class="award-quote">For being extremely caring, loving, and my absolute most favorite person! 👑 I'll always, truly, honestly, and completely love you</p>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 5 -->
+<div class="slide" id="slide-5">
+  <div class="wavy-frame">
+    <h2>Some of Our pictures togetherrrr</h2>
+
+    <div class="gallery-grid">
+
+      <div class="polaroid">
+        <img src="photo1.jpeg" alt="Memory 1">
+        <p>Our first image pta h when you shared this one aur story pe bhi and bkc maine bhi legit sabko dikhai aur itna dekhti thi aisa lagta tha bkc sach mai humari humne saath mai khichi ho</p>
+      </div>
+
+      <div class="polaroid">
+        <img src="photo2.jpeg" alt="Memory 2">
+        <p>Okay ye meri fav hai maine banai thi dekh CUTEST AREN'T WE , WE AREE!!!!</p>
+      </div>
+
+      <div class="polaroid">
+        <img src="photo3.jpeg" alt="Memory 3">
+        <p>And lastly this shaadi ni karega aise hi UTHA KE LE JAAUNGI, MERA MARD HAI TU</p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 6 -->
+<div class="slide" id="slide-6">
+  <div class="wavy-frame">
+    <h2>Your my everything kartik , Everything reminds me of you EVERYTHING AROUND ME I happiest version of me with the idea of YOU</h2>
+    <p class="song-sub">Press play to listen (Hasa na vahi aake karungi)</p>
+
+    <div class="vinyl-container">
+      <div class="record" id="vinyl-record">
+        <div class="record-center"></div>
+      </div>
+    </div>
+
+    <audio id="my-song" src="song.mp4" preload="auto"></audio>
+    <button class="audio-play-btn" onclick="togglePlay()">Play ▶</button>
+  </div>
+</div>
+
+<!-- SLIDE 7 -->
+<div class="slide" id="slide-7">
+  <div class="wavy-frame">
+    <p style="font-size:1.3rem; margin-bottom:16px;">
+      "And after all the reasons I could ever list, it still comes down to one simple thing..."
+    </p>
+
+    <div class="vintage-frame">
+      <img src="us.jpeg" alt="Us Together">
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 8 -->
+<div class="slide" id="slide-8">
+  <div class="wavy-frame">
+    <h2>ALL THINGS I WANT TO GIVE AND BE WITH YOU</h2>
+
+    <ul class="checklist">
+      <li>Love you even on your worst days.</li>
+      <li>Be your biggest supporter.</li>
+      <li>Listen when you need to talk.</li>
+      <li>Respect your dreams.</li>
+      <li>Choose you every single day.</li>
+      <li>Stand beside you in every situation.</li>
+      <li>Protect your peace.</li>
+      <li>Be your safe place.</li>
+      <li>Make you feel appreciated.</li>
+      <li>Stay loyal no matter what.</li>
+      <li>Celebrate your smallest wins.</li>
+      <li>Believe in you when you doubt yourself.</li>
+      <li>Hold your hand through tough times.</li>
+      <li>Make you laugh when life feels heavy.</li>
+      <li>Be honest with you always.</li>
+      <li>Respect your space when you need it.</li>
+      <li>Be proud to call you mine.</li>
+      <li>Support your ambitions.</li>
+      <li>Comfort you when you feel broken.</li>
+      <li>Be your calm in chaos.</li>
+      <li>Trust you with my whole heart.</li>
+      <li>Protect your heart like my own.</li>
+      <li>Remind you how amazing you are.</li>
+      <li>Stand up for you when needed.</li>
+      <li>Never stop flirting with you.</li>
+      <li>Be patient with you.</li>
+      <li>Grow with you, not against you.</li>
+      <li>Keep our bond strong.</li>
+      <li>Pray for your happiness.</li>
+      <li>Choose understanding over ego.</li>
+      <li>Be your partner in every adventure.</li>
+      <li>Stay by your side during storms.</li>
+      <li>Respect your family and loved ones.</li>
+      <li>Build a future together.</li>
+      <li>Appreciate everything you do.</li>
+      <li>Never take your love for granted.</li>
+      <li>Be your peace after a long day.</li>
+      <li>Encourage you to be your best self.</li>
+      <li>Be loyal even when it's hard.</li>
+      <li>Love you loudly and proudly.</li>
+    </ul>
+  </div>
+</div>
+
+</div>
+
+<!-- NAVIGATION -->
+<div class="nav-bar">
+  <button class="nav-arrow hidden" id="prev-btn" onclick="goToPrevSlide()">❮</button>
+  <button class="nav-arrow" id="next-btn" onclick="goToNextSlide()">❯</button>
+</div>
+
+</div>
+
+<script>
+let currentSlide = 0;
+
+const slides = document.querySelectorAll('.slide');
+const prevBtn = document.getElementById('prev-btn');
+const nextBtn = document.getElementById('next-btn');
+const audio = document.getElementById('my-song');
+const record = document.getElementById('vinyl-record');
+
+function updateSlide() {
+  slides.forEach((slide, index) => {
+    if (index === currentSlide) {
+      slide.classList.add('active');
+    } else {
+      slide.classList.remove('active');
+    }
+  });
+
+  if (currentSlide === 0) {
+    prevBtn.classList.add('hidden');
+  } else {
+    prevBtn.classList.remove('hidden');
+  }
+
+  if (currentSlide === slides.length - 1) {
+    nextBtn.classList.add('hidden');
+  } else {
+    nextBtn.classList.remove('hidden');
+  }
+}
+
+function goToNextSlide() {
+  if (currentSlide < slides.length - 1) {
+    currentSlide++;
+    updateSlide();
+  }
+}
+
+function goToPrevSlide() {
+  if (currentSlide > 0) {
+    currentSlide--;
+    updateSlide();
+  }
+}
+
+function togglePlay() {
+  if (audio.paused) {
+    audio.play().then(() => {
+      record.classList.add('playing');
+    }).catch(() => {
+      alert("Audio could not play. Make sure song.mp4 is uploaded in the same GitHub folder as index.html.");
+    });
+  } else {
+    audio.pause();
+    record.classList.remove('playing');
+  }
+}
+
+audio.addEventListener('ended', () => {
+  record.classList.remove('playing');
+});
+</script>
+
+</body>
+</html>
