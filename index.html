@@ -303,56 +303,151 @@
     .polaroid:nth-child(2) { --tilt: 3deg; }
     .polaroid:nth-child(3) { --tilt: -3deg; }
     /* The drop animation begins when the memories slide becomes visible */
-    .slide.active .polaroid:nth-child(1) { animation: polaroidDrop .9s cubic-bezier(.18,.75,.25,1.15) .15s forwards; }
-    .slide.active .polaroid:nth-child(2) { animation: polaroidDrop .9s cubic-bezier(.18,.75,.25,1.15) .45s forwards; }
-    .slide.active .polaroid:nth-child(3) { animation: polaroidDrop .9s cubic-bezier(.18,.75,.25,1.15) .75s forwards; }
+  .slide.active .gallery-grid .polaroid:nth-child(1) {
+  animation: polaroidDrop 1s cubic-bezier(.18,.75,.25,1.15) .2s forwards;
+}
 
-    @keyframes polaroidDrop {
-      0% { opacity: 0; transform: translateY(-120%) rotate(var(--tilt)); }
-      70% { opacity: 1; transform: translateY(8px) rotate(var(--tilt)); }
-      85% { transform: translateY(-5px) rotate(var(--tilt)); }
-      100% { opacity: 1; transform: translateY(0) rotate(var(--tilt)); }
-    }
+.slide.active .gallery-grid .polaroid:nth-child(2) {
+  animation: polaroidDrop 1s cubic-bezier(.18,.75,.25,1.15) .55s forwards;
+}
 
-    .polaroid::before {
-      content: "";
-      position: absolute;
-      top: -35px;
-      left: 50%;
-      transform: translateX(-50%) rotate(2deg);
-      width: 18px;
-      height: 42px;
-      background: linear-gradient(90deg, #c58b45, #e1b56f, #b87932);
-      border-radius: 3px;
-      box-shadow: 0 2px 5px rgba(0,0,0,.18);
-      z-index: 3;
-    }
-
-    .polaroid img {
-    width: 100%;
-    height: auto !important;
-    max-height: none !important;
-    object-fit: contain !important;
-    display: block;
-    border-radius: 4px;
-    background: #f2ebe0;
-    margin-bottom: 10px;
+.slide.active .gallery-grid .polaroid:nth-child(3) {
+  animation: polaroidDrop 1s cubic-bezier(.18,.75,.25,1.15) .9s forwards;
 }
 
 
-    .polaroid p {
-      font-size: clamp(.82rem, 1.05vw, 1rem);
-      line-height: 1.4;
-      color: #2b211e;
-      overflow-y: auto;
-      max-height: 120px;
-    }
+/* DROP KEYFRAMES */
+@keyframes polaroidDrop {
+  0% {
+    opacity: 0;
+    transform: translateY(-250px) rotate(var(--tilt, 0deg));
+  }
+
+  70% {
+    opacity: 1;
+    transform: translateY(15px) rotate(var(--tilt, 0deg));
+  }
+
+  85% {
+    transform: translateY(-8px) rotate(var(--tilt, 0deg));
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) rotate(var(--tilt, 0deg));
+  }
+}
 
 
-    .gallery-grid .polaroid:hover {
-      z-index: 5;
-      transform: translateY(-8px) rotate(0deg) scale(1.04);
-      transition: transform .25s ease;
+/* POLAROID FRAME */
+.gallery-grid .polaroid {
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px 12px 20px;
+  background: #fffdf9;
+  border-radius: 7px;
+  box-shadow: 0 12px 25px rgba(0,0,0,.18);
+
+  opacity: 0;
+  transform: translateY(-250px);
+
+  overflow: visible;
+}
+
+
+/* RANDOM POLAROID TILTS */
+.gallery-grid .polaroid:nth-child(1) {
+  --tilt: -5deg;
+}
+
+.gallery-grid .polaroid:nth-child(2) {
+  --tilt: 3deg;
+}
+
+.gallery-grid .polaroid:nth-child(3) {
+  --tilt: -2deg;
+}
+
+
+/* TAPE ON TOP */
+.gallery-grid .polaroid::before {
+  content: "";
+  position: absolute;
+  top: -35px;
+  left: 50%;
+  transform: translateX(-50%) rotate(2deg);
+
+  width: 20px;
+  height: 45px;
+
+  background: linear-gradient(
+    90deg,
+    #c58b45,
+    #e1b56f,
+    #b87932
+  );
+
+  border-radius: 4px;
+  box-shadow: 0 3px 6px rgba(0,0,0,.2);
+  z-index: 5;
+}
+
+
+/* IMAGE — SHOW THE WHOLE PHOTO, NO CROPPING */
+.gallery-grid .polaroid img {
+  display: block;
+
+  width: 100%;
+  height: 280px;
+
+  object-fit: contain;
+  object-position: center;
+
+  max-width: 100%;
+  max-height: none;
+
+  background: #f2ebe0;
+  border-radius: 4px;
+
+  margin: 0 auto 12px;
+}
+
+
+/* CAPTION */
+.gallery-grid .polaroid p {
+  font-size: clamp(.85rem, 1.05vw, 1rem);
+  line-height: 1.5;
+
+  color: #2b211e;
+  text-align: center;
+
+  margin: 0;
+  padding: 0 3px;
+
+  max-height: 150px;
+  overflow-y: auto;
+}
+
+
+/* HOVER EFFECT */
+.gallery-grid .polaroid:hover {
+  z-index: 10;
+  transform: translateY(-8px) rotate(0deg) scale(1.04);
+  transition: transform .3s ease;
+}
+
+
+/* MOBILE RESPONSIVENESS */
+@media (max-width: 768px) {
+
+  .gallery-grid .polaroid img {
+    height: 220px;
+  }
+
+  .gallery-grid .polaroid {
+    padding: 10px 10px 16px;
+  }
     }
 
     /* Birthday balloons on Slide 2 */
